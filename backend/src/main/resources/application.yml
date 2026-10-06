@@ -30,6 +30,13 @@ spring:
     time-zone: UTC
     default-property-inclusion: non_null
 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
 # Custom Application Properties
 smartparking:
   jwt:
