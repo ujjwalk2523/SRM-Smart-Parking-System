@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${smartparking.cors.allowed-origins:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}")
+    @Value("${smartparking.cors.allowed-origins:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://*.vercel.app,https://*.onrender.com}")
     private String allowedOrigins;
 
     @Override
@@ -19,8 +19,10 @@ public class WebConfig implements WebMvcConfigurer {
         String[] origins = allowedOrigins.split(",");
         registry.addMapping("/**")
                 .allowedOriginPatterns(origins)
+                .allowedOriginPatterns("*")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
+                .exposedHeaders("Authorization", "Link", "X-Total-Count")
                 .allowCredentials(true)
                 .maxAge(3600);
     }

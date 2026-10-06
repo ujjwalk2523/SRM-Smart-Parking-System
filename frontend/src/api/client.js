@@ -10,7 +10,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 15000,
+  timeout: 60000,
 });
 
 // Request interceptor to attach JWT token
@@ -37,7 +37,10 @@ api.interceptors.response.use(
         window.location.href = '/login';
       }
     }
-    const message = error.response?.data?.message || error.message || 'An unexpected error occurred';
+    let message = error.response?.data?.message || error.message || 'An unexpected error occurred';
+    if (error.message === 'Network Error') {
+      message = 'Server is connecting or waking up from sleep. Please try again in a few moments.';
+    }
     return Promise.reject(new Error(message));
   }
 );
