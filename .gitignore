@@ -1,0 +1,43 @@
+# ==============================================================================
+# Smart Parking System - Git Ignore Configuration
+# ==============================================================================
+
+# Compiled Node / Frontend Dependencies & Bundles
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+node_modules/
+dist/
+
+# Java / Maven Build Artifacts
+backend/target/
+target/
+*.class
+*.jar
+*.war
+
+# Environment & Sensitive Secrets
+.env
+.env.local
+.env.*.local
+*.log
+
+# IDE & Editor Configurations
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.lnk
